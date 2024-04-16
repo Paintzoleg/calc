@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calculatta NZ1.5400</title>
+
+		<style>
+
+			@font-face {
+    font-family: 'DS-Digital Normal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('DS-Digital Normal'), url('DS-DIGI.woff') format('woff');
+    }
+
+
+			html {
+	background: #b6bec4;
+}
+
+
+
+.main {
+	display: block;
+  margin: 0 auto;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	width: 287px;
+	padding: 12px;
+	padding-right: 6px;
+	border-radius: 8px;
+	background: #3d4543;
+	background-image: linear-gradient(to bottom, #3d4543, #242324);
+	/*box-shadow: inset 0px 0px 3px rgba(255, 255, 255, 0.644);*/
+	 box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.719),
+    0 0 2px rgba(255, 255, 255, 0.664) inset;
+}
+
+
+
+.display {
+
+	font-family: 'DS-Digital Normal';
+	border-width: 6px;
+	border-style: solid;
+	border-color: rgb(27, 27, 27);
+	background-color: rgb(61, 71, 52);
+	padding: 15px;
+	width: 240px;
+	height: 72px;
+	text-align: right;
+	font-size: 60px;
+	color: rgb(72, 255, 0);
+	border-radius: 9px;
+	box-shadow: inset 0px 5px 14px 0px rgba(0, 0, 0, 0.582);
+	text-shadow: 1px 1px 2px rgb(10, 63, 0), 0 0 1em rgb(157, 255, 0);
+	overflow: hidden;
+}
+
+#output {
+	position: relative;
+
+            bottom: 54px;
+}
+
+
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+.blink {
+	margin-bottom: -41px;
+	font-family: 'DS-Digital Normal';
+	font-size: 49px;
+	color: #00ff00;
+    position: relative;
+    bottom: 84px;
+    left: 11px;
+    animation: blink 1s step-start 0s infinite;
+    -webkit-animation: blink 1s step-start 0s infinite;
+    text-shadow: 1px 1px 2px #192916, 0 0 0.2em rgb(157, 255, 0);
+
+}
+
+.logo {
+	color: #bebebe;
+	position: relative;
+	width: 115px;
+	/*right: -192px;*/
+	left: 5px;
+	font-style: italic;
+	text-shadow: 0.5px 0.5px 1px black, 0 0 0.1em black;
+}
+
+.logo:hover {
+	color:white;
+	cursor: pointer;
+}
+
+.logo:active {
+	color:#4d4d4d;
+
+}
+
+.cbutt {
+	text-shadow: 0px, 1px, 1px, 0px, black;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	border-radius: 3px;
+	padding: 10px;
+	width: 67px;
+	height: 45px;
+	margin-top: 10px;
+	background-color: rgb(121, 121, 121);
+	background-image: linear-gradient(to bottom, #b34816, #612619);
+	color: rgb(163, 163, 163);
+}
+
+button {
+	text-shadow: 0px, 1px, 1px, 0px, black;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	border-radius: 3px;
+	padding: 10px;
+	width: 67px;
+	height: 45px;
+	margin-top: 10px;
+	background-color: rgb(121, 121, 121);
+	background-image: linear-gradient(to bottom, #4b5351, #323233);
+	color: rgb(209, 209, 209);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.541), 0 0 1em rgb(255, 255, 255);
+	font-size: 20px;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.575), 0 0 4px rgba(255, 255, 255, 0.226) inset;
+}
+
+.cbutt:hover {
+	color: rgb(214, 214, 214);
+	cursor: pointer;
+	background-color: rgb(121, 121, 121);
+	background-image: linear-gradient(to bottom, #b34816, #8d2c0f);
+}
+
+button:hover {
+	color: rgb(240, 240, 240);
+	cursor: pointer;
+	/*background-color: rgb(121, 121, 121);*/
+	background-image: linear-gradient(to bottom, #5f6664, #353535);
+}
+
+button:active {
+	color: rgb(105, 105, 105);
+	/*background-color: rgb(44, 44, 44);*/
+	background-image: linear-gradient(to bottom, #2c2b2c, #242726);
+	box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.719);
+}
+
+.cbutt:active {
+	color: rgb(105, 105, 105);
+	background-color: rgb(44, 44, 44);
+	background-image: linear-gradient(to bottom, #441603, #531c0c);
+	box-shadow: inset 0px 2px 5px 1px rgba(0, 0, 0, 0.719);
+}
+
+[tooltip] {
+    position: relative;
+   }
+   [tooltip]::after {
+	font-family: Arial;
+    font-size: 12px;
+    border-radius: 7px;
+    content: attr(tooltip);
+    position: absolute;
+    width: 271px;
+    left: -12px; top: 0;
+    background: #000000b9;
+    color: #fff;
+    padding: 1em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.39);
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.1s;
+   }
+   [tooltip]:hover::after {
+    opacity: 1;
+    top: 2em;
+   }
+
+		</style>
+	</head>
+	<body>
+		<div class="wraper">
+
+			<div class="main">
+				<div class="display">
+					<p id="output" class="output">0</p>
+				</div>
+				<div class="blink">:</div>
+				<div class="logo" id="logo" tooltip="Calcutta NZ1  This is a simple, but stylish, photorealistic calculator without pictures and without the use of graphic editors. It was created as a challenge to learn JavaScript. Also implemented are the connection of third-party fonts and animation of the cursor, the appearance of a tooltip. The calculator is alive, it responds to movement, to pressing buttons, and of course, like all calculators, it solves numbers. Oleg Nazarenko 2022" >Calcutta NZ1.540</div>
+
+				<div class="first-row">
+					<button id="r1-1"
+						style="width: 138px"
+						class="cbutt"
+						onclick="cleanOutput()"
+					>
+						C
+					</button>
+					<button id="r1-3" onclick="perc()">%</button>
+					<button id="r1-4" onclick="forDisplay('/')">/</button>
+				</div>
+				<div class="second-row">
+					<button id="r2-1" onclick="forDisplay('7')">7</button>
+					<button id="r2-2" onclick="forDisplay('8')">8</button>
+					<button id="r2-3" onclick="forDisplay('9')">9</button>
+					<button id="r2-4" onclick="forDisplay('*')">X</button>
+				</div>
+				<div class="third-row">
+					<button id="r3-1" onclick="forDisplay('4')">4</button>
+					<button id="r3-2" onclick="forDisplay('5')">5</button>
+					<button id="r3-3" onclick="forDisplay('6')">6</button>
+					<button id="r3-4" onclick="forDisplay('-')">-</button>
+				</div>
+				<div class="forth-row">
+					<button id="r4-1" onclick="forDisplay('1')">1</button>
+					<button id="r4-2" onclick="forDisplay('2')">2</button>
+					<button id="r4-3" onclick="forDisplay('3')">3</button>
+					<button id="r4-4" onclick="forDisplay('+')">+</button>
+				</div>
+				<div class="fifth-row">
+					<button id="r5-1" onclick="forDisplay('0')" style="width: 138px">
+						0
+					</button>
+					<button id="r5-2" onclick="forDisplay('.')">.</button>
+					<button id="r5-3" onclick="solve('=')">=</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			function cleanOutput() {
+	document.getElementById('output').innerHTML = '0'
+}
+function delNull() {
+	let value = document.getElementById('output').innerHTML
+	if (value == '0') {
+		value = ''
+		document.getElementById('output').innerHTML = value
+	}
+}
+
+function perc() {
+	delNull()
+	let value = document.getElementById('output').innerHTML
+	value = value / 100
+	document.getElementById('output').innerHTML = value
+}
+
+function forDisplay(myValue) {
+	delNull()
+	document.getElementById('output').innerHTML += myValue
+}
+
+function solve() {
+	delNull()
+	let = equation = document.getElementById('output').innerHTML,
+	      solved = eval(equation),
+	      strSolved = solved.toString(),
+			  res = Number(strSolved.slice(0, 7))
+				document.getElementById('output').innerHTML = res;
+			}
+
+		</script>
+	</body>
+</html>
